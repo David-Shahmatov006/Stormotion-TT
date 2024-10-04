@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Stormotion-TT/static/css/main.a0c62ae7.css",
-    "main.js": "/Stormotion-TT/static/js/main.cc1d4b2e.js",
+    "main.css": "/Stormotion-TT/static/css/main.d95e8fc8.css",
+    "main.js": "/Stormotion-TT/static/js/main.8c445e3f.js",
     "index.html": "/Stormotion-TT/index.html",
-    "main.a0c62ae7.css.map": "/Stormotion-TT/static/css/main.a0c62ae7.css.map",
-    "main.cc1d4b2e.js.map": "/Stormotion-TT/static/js/main.cc1d4b2e.js.map"
+    "main.d95e8fc8.css.map": "/Stormotion-TT/static/css/main.d95e8fc8.css.map",
+    "main.8c445e3f.js.map": "/Stormotion-TT/static/js/main.8c445e3f.js.map"
   },
   "entrypoints": [
-    "static/css/main.a0c62ae7.css",
-    "static/js/main.cc1d4b2e.js"
+    "static/css/main.d95e8fc8.css",
+    "static/js/main.8c445e3f.js"
   ]
 }
