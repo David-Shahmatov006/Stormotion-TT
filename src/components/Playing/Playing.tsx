@@ -28,7 +28,7 @@ const Playing: React.FC<Props> = ({
             <p className="playing__text">Ваші сірники: {playerMatches}</p>
             <p className="playing__text">Сірники комп'ютера: {computerMatches}</p>
             <p className="playing__text message">{message}</p>
-            {whichIsTurn === "player" && (
+            {(whichIsTurn === "player" && matchesLeft) && (
                 <div className="playing__pick-buttons">
                     {Array.from({ length: maxPick }, (item, idx) => (
                         <button
