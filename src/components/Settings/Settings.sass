@@ -1,0 +1,101 @@
+@import '~bootstrap/scss/bootstrap'
+@import '../../../styles/_mixins'
+@import '../../../styles/_variables'
+
+.settings
+    &__item
+        display: flex
+        flex-direction: column
+        margin-bottom: 15px
+
+        span
+            @include onPhone
+                font-size: 17px
+            color: $main-color
+            font-size: 20px
+
+        input
+            background-color: transparent
+            border: none
+            border-bottom: 1px solid $main-color
+            color: #fff
+            font-size: 17px
+
+    &__start-button
+        @include onPhone
+            padding: 5px 20px
+            font-size: 17px
+        padding: 10px 0
+        width: 100%
+        background-color: #f59b25
+        border: none
+        text-transform: uppercase
+        color: #fff
+        border-radius: 10px
+        transition: all ease-in-out .3s
+
+        &:hover
+            background-color: $button-hover
+            transition: all ease-in-out .3s
+
+        &:disabled
+            background-color: $button-disabled
+            color: #d3cfcf
+            cursor: not-allowed
+
+.dropdown
+    margin-bottom: 15px
+
+    &-toggle
+        padding: 0
+        border: none
+        font-size: 20px
+        color: $main-color
+
+        &:hover
+            background-color: transparent
+            box-shadow: none
+            color: $main-color
+
+        &:focus-visible
+            background-color: transparent
+            color: $main-color
+
+        &:active
+            background-color: transparent
+            color: $main-color
+
+        &::after
+            display: inline-block
+            margin-left: 20px
+            width: 10px
+            height: 10px
+            border-right: 2px solid $main-color
+            border-bottom: 2px solid $main-color
+            border-left: none
+            border-top: none
+            transform: rotate(45deg)
+            transition: all ease-in-out .3s
+
+        &.show::after
+            transform: rotate(225deg)
+            transition: all ease-in-out .3s
+
+    .btn
+        background-color: transparent
+
+        &:active
+            background-color: transparent
+            color: $main-color
+
+        &:hover
+            background-color: transparent
+            color: $main-color
+
+    &-menu
+        border-radius: 10px
+
+    &-item
+        &:hover
+            background-color: #f1910b69
+

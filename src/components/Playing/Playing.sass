@@ -1,0 +1,57 @@
+@import '../../../styles/_mixins'
+@import '../../../styles/_variables'
+
+.playing
+    &__text
+        @include onPhone
+            font-size: 17px
+        color: $main-color
+        font-size: 20px
+
+    .message
+        @include onPhone
+            font-size: 20px
+        color: #fa8e00
+        font-size: 25px
+
+    &__pick-buttons
+        @include onPhone
+            gap: 5px
+        display: flex
+        justify-content: space-around
+        flex-wrap: wrap
+        gap: 15px
+        max-height: 170px
+        overflow-y: auto
+        margin-bottom: 10px
+
+    &__pick-button
+        @include onPhone
+            padding: 5px 15px
+        padding: 10px 30px
+        background-color: #f59b25
+        border: none
+        text-transform: uppercase
+        color: #fff
+        border-radius: 10px
+        transition: all ease-in-out .3s
+
+        &:hover
+            background-color: $button-hover
+            transition: all ease-in-out .3s
+
+    &__new-game-button
+        @include onPhone
+            padding: 5px 15px
+        width: 100%
+        padding: 10px 0
+        background-color: #f59b25
+        border: none
+        text-transform: uppercase
+        color: #fff
+        border-radius: 10px
+        transition: all ease-in-out .3s
+
+        &:hover
+            background-color: $button-hover
+            transition: all ease-in-out .3s

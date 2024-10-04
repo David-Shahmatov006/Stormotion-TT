@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./App.sass";
-import { Dropdown } from "react-bootstrap";
+import Settings from "./components/Settings/Settings";
+import Playing from "./components/Playing/Playing";
 
 const Game: React.FC = () => {
     const [matchesLeft, setMatchesLeft] = useState<number>(25);
@@ -14,12 +15,23 @@ const Game: React.FC = () => {
     const [maxPick, setMaxPick] = useState<number>(3);
     const [gameStarted, setGameStarted] = useState<boolean>(false);
 
+    const startNewGame = () => {
+        setMatchesLeft(25);
+        setPlayerMatches(0);
+        setComputerMatches(0);
+        setMessage("");
+        setWhichIsTurnTitle("Хто ходить першим ?");
+        setWhichIsTurn("player");
+        setMaxPick(3);
+        setGameStarted(false);
+    }
+
     const startGame = () => {
         setPlayerMatches(0);
         setComputerMatches(0);
         setGameStarted(true);
         setWhichIsTurn(whichIsTurn);
-        if (whichIsTurn === 'computer') {
+        if (whichIsTurn === "computer") {
             setTimeout(() => computerTurn(0), 500);
         }
     };
@@ -37,7 +49,7 @@ const Game: React.FC = () => {
 
             if (matchesLeft - playerPick - computerPick <= 0) {
                 determineWinner(playerPick, computerPick);
-            };
+            }
         }, 500);
     };
 
@@ -82,95 +94,27 @@ const Game: React.FC = () => {
             <div className="game__content">
                 <h1 className="game__title">Гра із сірниками</h1>
                 {!gameStarted ? (
-                    <div className="game__settings">
-                        <label className="game__settings-item">
-                            <span>Кількість сірників (непарна !):</span>
-                            <input
-                                type="number"
-                                value={matchesLeft}
-                                onChange={(e) =>
-                                    setMatchesLeft(+e.target.value)
-                                }
-                                min="3"
-                                step="2"
-                            />
-                        </label>
-                        <label className="game__settings-item">
-                            <span>
-                                Максимальна кількість сірників, які можна брати
-                                (m):
-                            </span>
-                            <input
-                                type="number"
-                                value={maxPick}
-                                onChange={(e) =>
-                                    setMaxPick(+(e.target.value))
-                                }
-                                min="1"
-                            />
-                        </label>
-                        <Dropdown>
-                            <Dropdown.Toggle
-                                variant="success"
-                                id="dropdown-basic"
-                            >
-                                {whichIsTurnTitle}
-                            </Dropdown.Toggle>
-                            <Dropdown.Menu>
-                                <Dropdown.Item
-                                    onClick={() => {
-                                        setWhichIsTurn("player");
-                                        setWhichIsTurnTitle("Ви");
-                                    }}
-                                >
-                                    Ви 👨‍💻
-                                </Dropdown.Item>
-                                <Dropdown.Item
-                                    onClick={() => {
-                                        setWhichIsTurn("computer");
-                                        setWhichIsTurnTitle("Комп'ютер");
-                                    }}
-                                >
-                                    Комп'ютер 🤖
-                                </Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
-                        <button
-                            className="game__start-button"
-                            onClick={startGame}
-                            disabled={
-                                whichIsTurnTitle === "Хто ходить першим ?" || !matchesLeft
-                            }
-                        >
-                            Почати гру
-                        </button>
-                    </div>
+                    <Settings
+                        matchesLeft={matchesLeft}
+                        setMatchesLeft={setMatchesLeft}
+                        maxPick={maxPick}
+                        setMaxPick={setMaxPick}
+                        setWhichIsTurn={setWhichIsTurn}
+                        whichIsTurnTitle={whichIsTurnTitle}
+                        setWhichIsTurnTitle={setWhichIsTurnTitle}
+                        startGame={startGame}
+                    />
                 ) : (
-                    <div className="game__playing">
-                        <p className="game__text">
-                            Залишилось сірників: {matchesLeft}
-                        </p>
-                        <p className="game__text">
-                            Ваші сірники: {playerMatches}
-                        </p>
-                        <p className="game__text">
-                            Сірники комп'ютера: {computerMatches}
-                        </p>
-                        <p className="game__text message">{message}</p>
-                        {whichIsTurn === "player" && (
-                            <div className="game__pick-buttons">
-                                {Array.from({ length: maxPick }, (item, idx) => (
-                                    <button
-                                        key={idx}
-                                        onClick={() => handlePlayerPick(idx + 1)}
-                                        className="game__pick-button"
-                                    >
-                                        Взяти {idx + 1}
-                                    </button>
-                                ))}
-                            </div>
-                        )}
-                    </div>
+                    <Playing
+                        matchesLeft={matchesLeft}
+                        playerMatches={playerMatches}
+                        computerMatches={computerMatches}
+                        message={message}
+                        whichIsTurn={whichIsTurn}
+                        maxPick={maxPick}
+                        handlePlayerPick={handlePlayerPick}
+                        startNewGame={startNewGame}
+                    />
                 )}
             </div>
         </div>
