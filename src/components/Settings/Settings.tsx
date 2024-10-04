@@ -23,6 +23,11 @@ const Settings: React.FC<Props> = ({
     setWhichIsTurnTitle,
     startGame,
 }) => {
+    const disabledConditionals =
+        whichIsTurnTitle === "Хто ходить першим ?" ||
+        !matchesLeft ||
+        maxPick >= matchesLeft;
+
     return (
         <div className="settings">
             <label className="settings__item">
@@ -70,11 +75,7 @@ const Settings: React.FC<Props> = ({
             <button
                 className="settings__start-button"
                 onClick={startGame}
-                disabled={
-                    whichIsTurnTitle === "Хто ходить першим ?" ||
-                    !matchesLeft ||
-                    maxPick >= matchesLeft
-                }
+                disabled={disabledConditionals}
             >
                 Почати гру
             </button>
